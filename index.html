@@ -1,0 +1,1432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JetHQ — Brand Guidelines</title>
+<meta name="description" content="JetHQ brand system. Charcoal ground, warm gold identity, Mrs Eaves serif, Gotham sans, a single topographic motif, and a teal accent reserved for state.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* fonts */
+    --font-display: 'Mrs Eaves OT', 'EB Garamond', Georgia, serif;
+    --font-sans:    'Gotham', 'Gotham SSm', 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono:    'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+
+    /* surfaces */
+    --surface-page:        hsl(204 5% 27%);   /* #414649 */
+    --surface-card:        hsl(0 0% 15%);     /* #262626 */
+    --surface-card-hover:  hsl(0 0% 18%);
+
+    /* brand */
+    --brand-gold:          hsl(34 36% 58%);   /* #b9986d */
+    --brand-gold-deep:     hsl(34 36% 50%);
+    --brand-gold-tint:     hsl(34 36% 58% / 0.10);
+    --signal-teal:         hsl(182 47% 46%);  /* #3dabaf */
+
+    /* text */
+    --text-on-dark:        hsl(0 0% 81%);     /* #cfcfcf */
+    --text-strong:         hsl(0 0% 96%);
+    --text-muted:          hsl(0 0% 65%);
+    --text-placeholder:    hsl(0 0% 55%);
+
+    /* borders */
+    --border:              hsl(0 0% 81% / 0.14);
+    --border-input:        hsl(0 0% 81% / 0.18);
+    --border-strong:       hsl(0 0% 81% / 0.28);
+
+    --nav-height: 72px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--surface-page);
+    color: var(--text-on-dark);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.55;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--signal-teal);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* ------- structural frame ------- */
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav {
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(20px, 4vw, 48px);
+    background: var(--surface-page);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    background: hsl(204 5% 27% / 0.92);
+  }
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .lockup svg { display: block; }
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .wordmark .jet { color: var(--text-strong); }
+  .wordmark .hq  { color: var(--brand-gold); }
+
+  .nav-links {
+    display: flex;
+    gap: clamp(20px, 3vw, 36px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-on-dark);
+    text-decoration: none;
+    transition: color 200ms ease-out;
+  }
+  .nav-links a:hover { color: var(--brand-gold); }
+
+  .hairline {
+    height: 1px;
+    background: var(--brand-gold);
+    width: 100%;
+  }
+
+  .bottom-bar {
+    height: 12px;
+    background: var(--brand-gold);
+    width: 100%;
+    margin-top: auto;
+  }
+
+  /* ------- topographic motif ------- */
+  .topo-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .topo-bg svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.18;
+  }
+
+  /* ------- main + sections ------- */
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 48px);
+  }
+
+  section {
+    padding: clamp(64px, 9vw, 128px) 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  section:last-of-type { border-bottom: none; }
+
+  /* hero */
+  .hero {
+    padding-top: clamp(56px, 9vw, 112px);
+    position: relative;
+  }
+  .hero-inner { position: relative; max-width: 880px; }
+
+  .display-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(56px, 9vw, 96px);
+    line-height: 1;
+    letter-spacing: -0.005em;
+    color: var(--brand-gold);
+    margin: 0 0 16px 0;
+  }
+  .display-title .second {
+    display: block;
+    font-style: italic;
+    color: var(--brand-gold);
+  }
+  .display-eyebrow {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin: 0 0 32px 0;
+  }
+  .display-lede {
+    font-family: var(--font-sans);
+    font-size: clamp(18px, 1.8vw, 22px);
+    line-height: 1.5;
+    font-weight: 300;
+    color: var(--text-on-dark);
+    max-width: 640px;
+    margin: 0 0 40px 0;
+  }
+  .display-lede em {
+    font-style: italic;
+    color: var(--text-strong);
+  }
+
+  .trust-bar {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  .trust-bar span + span::before {
+    content: "·";
+    margin: 0 0.75em;
+    color: var(--text-muted);
+  }
+
+  /* section header (signature heading + subheading + corner arrow) */
+  .section-header {
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+  .section-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    max-width: 880px;
+  }
+  .label-gold {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin: 0;
+  }
+  .corner-arrow {
+    color: var(--text-on-dark);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin: 0 0 6px 0;
+  }
+  .section-subheading {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: clamp(18px, 1.8vw, 22px);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text-strong);
+    margin: 0 0 24px 0;
+  }
+  .section-body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-on-dark);
+    max-width: 640px;
+    margin: 0;
+  }
+  .section-body + .section-body { margin-top: 14px; }
+
+  /* logo section */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .logo-tile {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 56px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    gap: 20px;
+  }
+  .logo-tile.on-light {
+    background: hsl(38 18% 96%);
+    color: hsl(0 0% 15%);
+  }
+  .logo-tile.on-light .wordmark .jet { color: hsl(0 0% 15%); }
+  .logo-tile.on-light .wordmark .hq { color: var(--brand-gold); }
+  .logo-tile .caption {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .logo-tile.on-light .caption { color: hsl(204 5% 38%); }
+  .logo-rules {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .rule-card {
+    padding: 24px;
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .rule-card h4 {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin: 0 0 10px 0;
+  }
+  .rule-card p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-on-dark);
+    margin: 0;
+  }
+
+  /* typography section */
+  .type-spec {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+  }
+  .type-card {
+    padding: 32px;
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .type-card .sample {
+    font-size: 96px;
+    line-height: 1;
+    margin: 0 0 24px 0;
+  }
+  .type-card .sample.serif {
+    font-family: var(--font-display);
+    color: var(--brand-gold);
+    font-weight: 400;
+  }
+  .type-card .sample.sans {
+    font-family: var(--font-sans);
+    color: var(--text-strong);
+    font-weight: 500;
+  }
+  .type-card .meta {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin: 0 0 6px 0;
+  }
+  .type-card .name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-strong);
+    margin: 0 0 16px 0;
+  }
+  .type-card .alphabet {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    margin: 0;
+    word-break: break-word;
+  }
+  .type-card.serif .alphabet { font-family: var(--font-display); }
+  .type-card.sans  .alphabet { font-family: var(--font-sans); }
+
+  .type-scale {
+    margin-top: 48px;
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .type-scale-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-scale-row:last-child { border-bottom: none; }
+  .type-scale-row .role {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .type-scale-row .demo { color: var(--text-on-dark); }
+  .type-scale-row .demo.serif-72 { font-family: var(--font-display); font-size: 56px; line-height: 1.05; color: var(--brand-gold); font-weight: 400; }
+  .type-scale-row .demo.serif-44 { font-family: var(--font-display); font-size: 36px; line-height: 1.15; color: var(--text-strong); font-weight: 400; }
+  .type-scale-row .demo.serif-32 { font-family: var(--font-display); font-size: 28px; line-height: 1.2;  color: var(--text-strong); font-weight: 400; }
+  .type-scale-row .demo.label-13 { font-family: var(--font-display); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brand-gold); font-weight: 500; }
+  .type-scale-row .demo.sans-22  { font-family: var(--font-sans); font-size: 22px; font-weight: 500; color: var(--text-strong); }
+  .type-scale-row .demo.sans-15  { font-family: var(--font-sans); font-size: 15px; font-weight: 300; color: var(--text-on-dark); }
+  .type-scale-row .demo.sans-12  { font-family: var(--font-sans); font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+  .type-scale-row .demo.mono-14  { font-family: var(--font-mono); font-size: 14px; color: var(--text-strong); letter-spacing: 0.04em; }
+
+  /* color section */
+  .color-grid {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .swatch {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .swatch .chip {
+    height: 140px;
+    width: 100%;
+  }
+  .swatch .info { padding: 20px 24px 24px; }
+  .swatch .role {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin: 0 0 8px 0;
+  }
+  .swatch .name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-strong);
+    margin: 0 0 14px 0;
+  }
+  .swatch .hex,
+  .swatch .hsl {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0 0 4px 0;
+    letter-spacing: 0.02em;
+  }
+  .swatch .usage {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--text-on-dark);
+    line-height: 1.5;
+    margin: 14px 0 0 0;
+  }
+  .swatch .chip.gold     { background: #b9986d; }
+  .swatch .chip.ink      { background: #262626; }
+  .swatch .chip.slate    { background: #414649; border-bottom: 1px solid var(--border); }
+  .swatch .chip.mist     { background: #cfcfcf; }
+  .swatch .chip.teal     { background: #3dabaf; }
+
+  .color-rules {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  /* components section */
+  .component-grid {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 720px) { .component-grid { grid-template-columns: 1fr; } }
+  .panel {
+    padding: 32px;
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+  .panel-title {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin: 0;
+  }
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+    font-feature-settings: "tnum" 1;
+  }
+  .btn-hero {
+    background: var(--brand-gold);
+    color: hsl(0 0% 15%);
+    border-color: var(--brand-gold);
+  }
+  .btn-hero:hover { background: var(--brand-gold-deep); border-color: var(--brand-gold-deep); }
+  .btn-outline {
+    background: transparent;
+    color: var(--brand-gold);
+    border-color: var(--brand-gold);
+  }
+  .btn-outline:hover { background: var(--brand-gold-tint); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-on-dark);
+    border-color: var(--border-strong);
+  }
+  .btn-ghost:hover { background: hsl(0 0% 81% / 0.06); }
+  .btn-note {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* status row */
+  .status-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    font-feature-settings: "tnum" 1;
+  }
+  .badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .badge.success { background: hsl(150 30% 18%); color: hsl(150 50% 70%); border-color: hsl(150 30% 32%); }
+  .badge.warning { background: hsl(34 40% 22%);  color: hsl(34 60% 72%);  border-color: hsl(34 40% 38%); }
+  .badge.error   { background: hsl(4 40% 22%);   color: hsl(4 60% 72%);   border-color: hsl(4 40% 38%); }
+  .badge.info    { background: hsl(182 40% 18%); color: hsl(182 47% 70%); border-color: hsl(182 47% 38%); }
+
+  /* quote table */
+  .quote-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-feature-settings: "tnum" 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .quote-table th,
+  .quote-table td {
+    text-align: left;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .quote-table th {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+  }
+  .quote-table td.num { text-align: right; font-family: var(--font-mono); }
+  .quote-table tr:last-child td { border-bottom: none; font-weight: 500; color: var(--text-strong); }
+
+  /* example card */
+  .feature-card {
+    padding: 36px;
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .feature-card h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 32px;
+    color: var(--brand-gold);
+    margin: 0 0 8px 0;
+  }
+  .feature-card p {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-on-dark);
+    margin: 0;
+  }
+  .feature-card .mono {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--brand-gold);
+    letter-spacing: 0.04em;
+  }
+
+  /* topo feature block */
+  .topo-feature-block {
+    border: 1px solid hsl(34 36% 58% / 0.30);
+    background-color: var(--surface-card);
+    aspect-ratio: 4 / 3;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .topo-feature-block svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* dos and donts */
+  .do-dont {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 720px) { .do-dont { grid-template-columns: 1fr; } }
+  .do-dont .panel h4 {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 18px 0;
+  }
+  .do-dont .panel.do h4 { color: hsl(150 50% 70%); }
+  .do-dont .panel.dont h4 { color: hsl(4 60% 72%); }
+  .do-dont ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .do-dont li {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-on-dark);
+    padding-left: 22px;
+    position: relative;
+  }
+  .do-dont .do li::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: hsl(150 50% 70%);
+    font-family: var(--font-mono);
+  }
+  .do-dont .dont li::before {
+    content: "×";
+    position: absolute;
+    left: 2px;
+    top: 0;
+    color: hsl(4 60% 72%);
+    font-family: var(--font-mono);
+  }
+
+  /* prompt embed */
+  .prompt-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .prompt-frame {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 40px clamp(20px, 4vw, 56px);
+    max-height: 720px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand-gold) transparent;
+  }
+  .prompt-frame::-webkit-scrollbar { width: 8px; }
+  .prompt-frame::-webkit-scrollbar-thumb { background: var(--brand-gold); border-radius: 4px; }
+
+  .prompt-frame .md h1 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--brand-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 24px 0;
+  }
+  .prompt-frame .md h2 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--brand-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 56px 0 16px 0;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .prompt-frame .md h2:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+  .prompt-frame .md h3 {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-strong);
+    margin: 32px 0 12px 0;
+  }
+  .prompt-frame .md p {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-on-dark);
+    margin: 0 0 14px 0;
+  }
+  .prompt-frame .md ul,
+  .prompt-frame .md ol {
+    padding-left: 22px;
+    margin: 0 0 16px 0;
+  }
+  .prompt-frame .md li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-on-dark);
+    margin-bottom: 6px;
+  }
+  .prompt-frame .md strong {
+    color: var(--text-strong);
+    font-weight: 600;
+  }
+  .prompt-frame .md em {
+    color: var(--brand-gold);
+    font-style: italic;
+  }
+  .prompt-frame .md code {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    background: hsl(0 0% 10%);
+    color: var(--brand-gold);
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+  .prompt-frame .md pre {
+    background: hsl(0 0% 10%);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin: 16px 0;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--text-on-dark);
+  }
+  .prompt-frame .md pre code { background: transparent; padding: 0; color: inherit; }
+  .prompt-frame .md table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+    font-feature-settings: "tnum" 1;
+  }
+  .prompt-frame .md th,
+  .prompt-frame .md td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-on-dark);
+    vertical-align: top;
+  }
+  .prompt-frame .md th {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+  }
+  .prompt-frame .md hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+  .prompt-frame .md blockquote {
+    border-left: 2px solid var(--brand-gold);
+    padding-left: 16px;
+    margin: 16px 0;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .prompt-frame .md a {
+    color: var(--brand-gold);
+    text-decoration: none;
+    border-bottom: 1px solid hsl(34 36% 58% / 0.4);
+  }
+  .prompt-frame .md a:hover { border-bottom-color: var(--brand-gold); }
+
+  /* footer */
+  footer.colophon {
+    padding: 48px clamp(20px, 4vw, 48px) 64px;
+    max-width: 1240px;
+    margin: 0 auto;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+  footer.colophon a {
+    color: var(--brand-gold);
+    text-decoration: none;
+    border-bottom: 1px solid hsl(34 36% 58% / 0.4);
+  }
+  footer.colophon p { margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============== NAV + GOLD HAIRLINE ============== -->
+  <nav class="nav" aria-label="Brand guideline navigation">
+    <a class="lockup" href="#top" aria-label="JetHQ home">
+      <!-- winged globe -->
+      <svg width="44" height="22" viewBox="0 0 44 22" aria-hidden="true">
+        <line x1="0" y1="11" x2="13" y2="11" stroke="#b9986d" stroke-width="1.2"/>
+        <line x1="0" y1="7"  x2="11" y2="7"  stroke="#b9986d" stroke-width="0.9"/>
+        <line x1="0" y1="15" x2="11" y2="15" stroke="#b9986d" stroke-width="0.9"/>
+        <line x1="31" y1="11" x2="44" y2="11" stroke="#b9986d" stroke-width="1.2"/>
+        <line x1="33" y1="7"  x2="44" y2="7"  stroke="#b9986d" stroke-width="0.9"/>
+        <line x1="33" y1="15" x2="44" y2="15" stroke="#b9986d" stroke-width="0.9"/>
+        <circle cx="22" cy="11" r="8" fill="none" stroke="#b9986d" stroke-width="1.4"/>
+        <line x1="14" y1="11" x2="30" y2="11" stroke="#b9986d" stroke-width="1"/>
+        <path d="M22 3 Q16 11 22 19 M22 3 Q28 11 22 19" fill="none" stroke="#b9986d" stroke-width="1"/>
+      </svg>
+      <span class="wordmark"><span class="jet">JET</span><span class="hq">HQ</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#logo">Logo</a></li>
+      <li><a href="#typography">Font</a></li>
+      <li><a href="#color">Color</a></li>
+      <li><a href="#visual">Visual</a></li>
+      <li><a href="#prompt">Prompt</a></li>
+    </ul>
+  </nav>
+  <div class="hairline" role="presentation"></div>
+
+  <!-- ============== MAIN ============== -->
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="topo-bg" aria-hidden="true">
+        <!-- topographic contour pattern -->
+        <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+          <g fill="none" stroke="#b9986d" stroke-width="0.6">
+            <path d="M-50,520 C 200,420 360,540 540,460 S 900,400 1250,500"/>
+            <path d="M-50,480 C 220,380 360,500 540,420 S 900,360 1250,460"/>
+            <path d="M-50,440 C 240,340 360,460 540,380 S 900,320 1250,420"/>
+            <path d="M-50,400 C 260,300 360,420 540,340 S 900,280 1250,380"/>
+            <path d="M-50,360 C 280,260 360,380 540,300 S 900,240 1250,340"/>
+            <path d="M-50,320 C 300,220 360,340 540,260 S 900,200 1250,300"/>
+            <path d="M-50,280 C 320,180 360,300 540,220 S 900,160 1250,260"/>
+            <path d="M-50,240 C 340,140 360,260 540,180 S 900,120 1250,220"/>
+            <path d="M-50,200 C 360,100 360,220 540,140 S 900, 80 1250,180"/>
+            <path d="M-50,160 C 380, 60 360,180 540,100 S 900, 40 1250,140"/>
+            <path d="M-50,120 C 400, 20 360,140 540, 60 S 900,  0 1250,100"/>
+            <path d="M-50, 80 C 420,-20 360,100 540, 20 S 900,-40 1250, 60"/>
+            <path d="M-50, 40 C 440,-60 360, 60 540,-20 S 900,-80 1250, 20"/>
+          </g>
+        </svg>
+      </div>
+      <div class="hero-inner">
+        <p class="display-eyebrow">JetHQ · Brand System v1</p>
+        <h1 class="display-title" id="hero-title">
+          Brand
+          <span class="second"><em>Guidelines</em></span>
+        </h1>
+        <p class="display-lede">
+          A single warm gold identity. A charcoal ground. Two fonts. One topographic motif.
+          A teal accent reserved for state. <em>The brand is the HQ, not the jet.</em>
+        </p>
+        <p class="trust-bar">
+          <span>Navigator / Steward</span>
+          <span>Two-color logo</span>
+          <span>Mrs Eaves + Gotham</span>
+          <span>Quiet luxury</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- LOGO -->
+    <section id="logo" aria-labelledby="logo-heading">
+      <header class="section-header">
+        <div class="section-row">
+          <p class="label-gold">Logo Usage</p>
+          <svg class="corner-arrow" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h2 class="section-heading" id="logo-heading">The Mark</h2>
+        <p class="section-subheading">Insignia, not a tech logo</p>
+        <p class="section-body">
+          A winged-globe monogram paired with the JETHQ wordmark — JET set in a light serif, HQ set in a gold serif.
+          The lockup is always a two-color treatment: ivory + gold on dark grounds; charcoal + gold on light grounds.
+          Never paint it entirely gold. Never paint it entirely white. Never apply gradients or set it inside a containing shape.
+        </p>
+      </header>
+
+      <div class="logo-grid">
+        <div class="logo-tile">
+          <svg width="220" height="48" viewBox="0 0 220 48" aria-hidden="true">
+            <line x1="6"  y1="24" x2="38" y2="24" stroke="#b9986d" stroke-width="1.4"/>
+            <line x1="6"  y1="18" x2="34" y2="18" stroke="#b9986d" stroke-width="1.0"/>
+            <line x1="6"  y1="30" x2="34" y2="30" stroke="#b9986d" stroke-width="1.0"/>
+            <line x1="58" y1="24" x2="90" y2="24" stroke="#b9986d" stroke-width="1.4"/>
+            <line x1="62" y1="18" x2="90" y2="18" stroke="#b9986d" stroke-width="1.0"/>
+            <line x1="62" y1="30" x2="90" y2="30" stroke="#b9986d" stroke-width="1.0"/>
+            <circle cx="48" cy="24" r="16" fill="none" stroke="#b9986d" stroke-width="1.6"/>
+            <line x1="32" y1="24" x2="64" y2="24" stroke="#b9986d" stroke-width="1.1"/>
+            <path d="M48 8 Q36 24 48 40 M48 8 Q60 24 48 40" fill="none" stroke="#b9986d" stroke-width="1.1"/>
+            <text x="110" y="34" fill="#cfcfcf" font-family="EB Garamond, serif" font-size="34" font-weight="500" letter-spacing="2">JET</text>
+            <text x="172" y="34" fill="#b9986d" font-family="EB Garamond, serif" font-size="34" font-weight="500" letter-spacing="2">HQ</text>
+          </svg>
+          <p class="caption">On dark · Charcoal #414649</p>
+        </div>
+        <div class="logo-tile on-light">
+          <svg width="220" height="48" viewBox="0 0 220 48" aria-hidden="true">
+            <line x1="6"  y1="24" x2="38" y2="24" stroke="#b9986d" stroke-width="1.4"/>
+            <line x1="6"  y1="18" x2="34" y2="18" stroke="#b9986d" stroke-width="1.0"/>
+            <line x1="6"  y1="30" x2="34" y2="30" stroke="#b9986d" stroke-width="1.0"/>
+            <line x1="58" y1="24" x2="90" y2="24" stroke="#b9986d" stroke-width="1.4"/>
+            <line x1="62" y1="18" x2="90" y2="18" stroke="#b9986d" stroke-width="1.0"/>
+            <line x1="62" y1="30" x2="90" y2="30" stroke="#b9986d" stroke-width="1.0"/>
+            <circle cx="48" cy="24" r="16" fill="none" stroke="#b9986d" stroke-width="1.6"/>
+            <line x1="32" y1="24" x2="64" y2="24" stroke="#b9986d" stroke-width="1.1"/>
+            <path d="M48 8 Q36 24 48 40 M48 8 Q60 24 48 40" fill="none" stroke="#b9986d" stroke-width="1.1"/>
+            <text x="110" y="34" fill="#262626" font-family="EB Garamond, serif" font-size="34" font-weight="500" letter-spacing="2">JET</text>
+            <text x="172" y="34" fill="#b9986d" font-family="EB Garamond, serif" font-size="34" font-weight="500" letter-spacing="2">HQ</text>
+          </svg>
+          <p class="caption">On light · Ivory #f5f1eb</p>
+        </div>
+      </div>
+
+      <div class="logo-rules">
+        <div class="rule-card">
+          <h4>Two-color rule</h4>
+          <p>Always JET (ivory or charcoal) + HQ (gold). Never solid gold, never solid white, never gradients.</p>
+        </div>
+        <div class="rule-card">
+          <h4>Clearspace</h4>
+          <p>Reserve the cap height of the J in JET around the entire lockup. Nothing crosses that boundary.</p>
+        </div>
+        <div class="rule-card">
+          <h4>Minimum size</h4>
+          <p>Full lockup ≥ 140px wide. Globe alone ≥ 32px square. Below that, globe glyph only.</p>
+        </div>
+        <div class="rule-card">
+          <h4>Never alter</h4>
+          <p>No stretching, rotating, recoloring, outlining, embossing, drop-shadows, or containing shapes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section id="typography" aria-labelledby="type-heading">
+      <header class="section-header">
+        <div class="section-row">
+          <p class="label-gold">Typeface &amp; Typography</p>
+          <svg class="corner-arrow" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h2 class="section-heading" id="type-heading">Two Fonts</h2>
+        <p class="section-subheading">Display serif + clean sans</p>
+        <p class="section-body">
+          Mrs Eaves does the heavy lifting for headings and the wordmark. Gotham handles navigation, body, and all dense data —
+          Light for body, Medium for UI. If brand-licensed fonts are unavailable, EB Garamond and Inter are mandatory free
+          fallbacks. Three fonts in a JetHQ surface is a redesign, not a variation.
+        </p>
+      </header>
+
+      <div class="type-spec">
+        <div class="type-card serif">
+          <p class="sample serif">Aa</p>
+          <p class="meta">Display Serif</p>
+          <p class="name">Mrs Eaves <span style="color:var(--text-muted); font-size:14px;">(EB Garamond fallback)</span></p>
+          <p class="alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789</p>
+        </div>
+        <div class="type-card sans">
+          <p class="sample sans">Aa</p>
+          <p class="meta">Sans (UI + Body)</p>
+          <p class="name">Gotham <span style="color:var(--text-muted); font-size:14px;">(Inter fallback)</span></p>
+          <p class="alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789</p>
+        </div>
+      </div>
+
+      <div class="type-scale" role="table" aria-label="Type scale">
+        <div class="type-scale-row"><span class="role">Display · 56–72px serif</span><span class="demo serif-72">Trips arranged.</span></div>
+        <div class="type-scale-row"><span class="role">H1 marketing · 44px serif</span><span class="demo serif-44">Private aviation, brokered</span></div>
+        <div class="type-scale-row"><span class="role">H2 marketing · 32px serif</span><span class="demo serif-32">Heavy jet · transcontinental range</span></div>
+        <div class="type-scale-row"><span class="role">Section label · 13px serif small-caps</span><span class="demo label-13">Logo Usage</span></div>
+        <div class="type-scale-row"><span class="role">Subheading · 22px sans medium</span><span class="demo sans-22">SUBHEADING</span></div>
+        <div class="type-scale-row"><span class="role">Body · 15px sans light</span><span class="demo sans-15">JetHQ sources, quotes, and oversees private charters across six regions. A single broker handles the trip from request to wheels-up.</span></div>
+        <div class="type-scale-row"><span class="role">Nav · 12px sans medium uppercase</span><span class="demo sans-12">Fleet · Routes · About · Quote</span></div>
+        <div class="type-scale-row"><span class="role">Mono · 14px JetBrains</span><span class="demo mono-14">N1234J · KTEB → LFPB · ICAO/EGGW</span></div>
+      </div>
+    </section>
+
+    <!-- COLOR -->
+    <section id="color" aria-labelledby="color-heading">
+      <header class="section-header">
+        <div class="section-row">
+          <p class="label-gold">Color Usage</p>
+          <svg class="corner-arrow" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h2 class="section-heading" id="color-heading">Five Swatches</h2>
+        <p class="section-subheading">Strict roles · no improvisation</p>
+        <p class="section-body">
+          Gold is identity, never interaction. Teal is state, never decoration. Charcoal is the page; cards descend toward
+          black, not ascend toward white. Mist is the body text on dark. Pure white only lives inside the lockup containment box.
+        </p>
+      </header>
+
+      <div class="color-grid">
+        <div class="swatch">
+          <div class="chip gold"></div>
+          <div class="info">
+            <p class="role">Primary identity</p>
+            <h3 class="name">Brand Gold</h3>
+            <p class="hex">#b9986d</p>
+            <p class="hsl">hsl(34 36% 58%)</p>
+            <p class="usage">Wordmark "HQ", section headings, small-caps labels, top hairline, bottom 12px bar, topographic accents.</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="chip ink"></div>
+          <div class="info">
+            <p class="role">Deepest dark</p>
+            <h3 class="name">Deep Ink</h3>
+            <p class="hex">#262626</p>
+            <p class="hsl">hsl(0 0% 15%)</p>
+            <p class="usage">Cards on dark, PDF cover backgrounds, body text on light surfaces, deepest panels.</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="chip slate"></div>
+          <div class="info">
+            <p class="role">Signature ground</p>
+            <h3 class="name">Charcoal Slate</h3>
+            <p class="hex">#414649</p>
+            <p class="hsl">hsl(204 5% 27%)</p>
+            <p class="usage">Default page background. Every marketing surface, deck, and PDF cover sits on this.</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="chip mist"></div>
+          <div class="info">
+            <p class="role">Body on dark</p>
+            <h3 class="name">Mist</h3>
+            <p class="hex">#cfcfcf</p>
+            <p class="hsl">hsl(0 0% 81%)</p>
+            <p class="usage">Body copy on dark, hairline dividers, the "JET" half of the wordmark on dark.</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="chip teal"></div>
+          <div class="info">
+            <p class="role">Reserved accent</p>
+            <h3 class="name">Signal Teal</h3>
+            <p class="hex">#3dabaf</p>
+            <p class="hsl">hsl(182 47% 46%)</p>
+            <p class="usage">State only — active, selected, focus, info. Never decorative. Never a chart series.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-rules">
+        <div class="rule-card">
+          <h4>Gold is identity</h4>
+          <p>The dominant brand color. Never paint a button gold by default — filled-gold is reserved for one hero CTA per page.</p>
+        </div>
+        <div class="rule-card">
+          <h4>Teal is state</h4>
+          <p>Active, selected, focus, info. The moment teal becomes decorative, its meaning as a state indicator is broken.</p>
+        </div>
+        <div class="rule-card">
+          <h4>Cards go darker</h4>
+          <p>On the charcoal ground, cards descend toward Deep Ink — not ascend toward white. The page reads like ink-on-paper.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISUAL ACCENTS -->
+    <section id="visual" aria-labelledby="visual-heading">
+      <header class="section-header">
+        <div class="section-row">
+          <p class="label-gold">Visual Accents</p>
+          <svg class="corner-arrow" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h2 class="section-heading" id="visual-heading">Topography</h2>
+        <p class="section-subheading">The only sanctioned ornament</p>
+        <p class="section-body">
+          Thin gold contour lines, like elevation rings on a survey map or isobars on a wind chart. They evoke terrain,
+          navigation, and the quiet precision of route planning — the work behind a trip, not the trip itself. Maximum two
+          topographic elements per visible viewport. Always low opacity. Never animated, never parallaxed, never over a photo.
+        </p>
+      </header>
+
+      <div class="component-grid">
+        <div class="topo-feature-block" aria-label="Topographic feature block — background texture">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+            <g fill="none" stroke="#b9986d" stroke-width="0.7" opacity="0.85">
+              <ellipse cx="200" cy="150" rx="60" ry="30"/>
+              <ellipse cx="200" cy="150" rx="90" ry="50"/>
+              <ellipse cx="200" cy="150" rx="120" ry="72"/>
+              <ellipse cx="200" cy="150" rx="150" ry="96"/>
+              <ellipse cx="200" cy="150" rx="180" ry="120"/>
+              <ellipse cx="200" cy="150" rx="210" ry="144"/>
+              <ellipse cx="200" cy="150" rx="240" ry="170"/>
+              <ellipse cx="200" cy="150" rx="270" ry="196"/>
+            </g>
+            <g fill="none" stroke="#b9986d" stroke-width="0.5" opacity="0.6">
+              <ellipse cx="120" cy="90"  rx="20" ry="14"/>
+              <ellipse cx="120" cy="90"  rx="36" ry="24"/>
+              <ellipse cx="290" cy="220" rx="22" ry="15"/>
+              <ellipse cx="290" cy="220" rx="40" ry="28"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="topo-feature-block" aria-label="Topographic feature block — flowing contours">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+            <g fill="none" stroke="#b9986d" stroke-width="0.7">
+              <path d="M-20,260 C 100,200 200,260 320,180 S 420,140 420,140"/>
+              <path d="M-20,230 C 100,170 200,230 320,150 S 420,110 420,110"/>
+              <path d="M-20,200 C 100,140 200,200 320,120 S 420, 80 420, 80"/>
+              <path d="M-20,170 C 100,110 200,170 320, 90 S 420, 50 420, 50"/>
+              <path d="M-20,140 C 100, 80 200,140 320, 60 S 420, 20 420, 20"/>
+              <path d="M-20,110 C 100, 50 200,110 320, 30 S 420,-10 420,-10"/>
+              <path d="M-20,290 C 100,230 200,290 320,210 S 420,170 420,170"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="logo-rules" style="margin-top: 40px;">
+        <div class="rule-card">
+          <h4>Corner arrow ↙</h4>
+          <p>A small bracket pointing southwest, placed at the top-right of every section heading. The JetHQ tick — quiet, technical, recurring.</p>
+          <div style="margin-top:14px; display:flex; align-items:center; gap:10px;">
+            <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" style="color: var(--text-on-dark);">
+              <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+            <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">1.5px stroke · 12–16px</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <h4>Gold rules · top &amp; bottom</h4>
+          <p>1px gold hairline beneath the nav. 12px solid gold bar flush with the bottom edge. Structural frame on every full-page surface.</p>
+        </div>
+        <div class="rule-card">
+          <h4>Restraint</h4>
+          <p>Never more than two topographic elements per viewport. Never over a photograph. Never on light surfaces unless rendered in charcoal at low opacity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section id="components" aria-labelledby="components-heading">
+      <header class="section-header">
+        <div class="section-row">
+          <p class="label-gold">Components</p>
+          <svg class="corner-arrow" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h2 class="section-heading" id="components-heading">In Use</h2>
+        <p class="section-subheading">Buttons · status · data</p>
+        <p class="section-body">
+          Buttons are rectangles, 4px radius. Pills are reserved for status indicators and avatars. The primary button is a
+          gold-outlined gold-text treatment on dark. Filled-gold exists but is rare — one hero CTA per page maximum.
+        </p>
+      </header>
+
+      <div class="component-grid">
+        <div class="panel">
+          <div class="panel-header">
+            <p class="panel-title">Buttons</p>
+            <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" style="color: var(--text-on-dark);">
+              <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="button-row">
+            <button class="btn btn-hero" type="button">Request a Quote</button>
+            <button class="btn btn-outline" type="button">Speak with a Broker</button>
+            <button class="btn btn-ghost" type="button">View Fleet</button>
+          </div>
+          <p class="btn-note">Filled-gold = hero CTA only, once per page. Outline-gold = default. Ghost = secondary on dense surfaces.</p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <p class="panel-title">Status (app mode only)</p>
+            <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" style="color: var(--text-on-dark);">
+              <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="status-row">
+            <span class="badge success">Confirmed</span>
+            <span class="badge warning">Hold expiring</span>
+            <span class="badge error">Quote expired</span>
+            <span class="badge info">Active</span>
+          </div>
+          <p class="btn-note">Semantic only. Status colors do not appear on marketing surfaces — never use them as decoration.</p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <p class="panel-title">Quote breakdown</p>
+            <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" style="color: var(--text-on-dark);">
+              <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <table class="quote-table">
+            <thead>
+              <tr><th>Leg</th><th>Route</th><th style="text-align:right;">Hours</th><th style="text-align:right;">USD</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>KTEB → LFPB</td><td class="num">7.6</td><td class="num">62,400</td></tr>
+              <tr><td>2</td><td>LFPB → LIRA</td><td class="num">2.1</td><td class="num">14,200</td></tr>
+              <tr><td>3</td><td>LIRA → KTEB</td><td class="num">9.2</td><td class="num">71,800</td></tr>
+              <tr><td colspan="2">Total</td><td class="num">18.9</td><td class="num">148,400</td></tr>
+            </tbody>
+          </table>
+          <p class="btn-note" style="margin-top:14px;">Tabular figures align the columns. Tail numbers and ICAO codes in mono uppercase.</p>
+        </div>
+
+        <div class="feature-card">
+          <p class="label-gold" style="margin-bottom:14px;">Heavy Jet</p>
+          <h3>Transcontinental</h3>
+          <p>Range 4,000+ nm, 10–14 passengers, full galley and enclosed lavatory. Commonly: <span class="mono">G550</span>, <span class="mono">GIV-SP</span>, <span class="mono">Falcon 7X</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOS AND DONTS -->
+    <section id="rules" aria-labelledby="rules-heading">
+      <header class="section-header">
+        <div class="section-row">
+          <p class="label-gold">House Rules</p>
+          <svg class="corner-arrow" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h2 class="section-heading" id="rules-heading">Do · Don't</h2>
+        <p class="section-subheading">Restraint over volume</p>
+      </header>
+
+      <div class="do-dont">
+        <div class="panel do">
+          <h4>Do</h4>
+          <ul>
+            <li>Default to the charcoal ground. The brand was designed for it.</li>
+            <li>Use exactly two fonts — display serif and sans.</li>
+            <li>Keep the gold hairline on top and the gold bar on the bottom.</li>
+            <li>Pair every section heading with a corner-arrow marker.</li>
+            <li>Reserve Signal Teal for state — active, selected, focus, info.</li>
+            <li>Use tabular figures in any dense data.</li>
+            <li>Show the broker — named, with credentials, real face, available light.</li>
+          </ul>
+        </div>
+        <div class="panel dont">
+          <h4>Don't</h4>
+          <ul>
+            <li>Don't paint the wordmark all-gold. Two-color only.</li>
+            <li>Don't paint a button gold by default. Outline-gold is the default; filled is for the hero CTA.</li>
+            <li>Don't use teal as a decorative accent. State only.</li>
+            <li>Don't make cards lighter than the page. Cards go darker, not lighter.</li>
+            <li>Don't use stock aviation imagery — tarmac handshakes, sunset tails, champagne cabins.</li>
+            <li>Don't use pills for buttons. Pills are for status and avatars.</li>
+            <li>Don't introduce a third font, glassmorphism, animated counters, or urgency banners.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND PROMPT EMBED -->
+    <section id="prompt" aria-labelledby="prompt-heading">
+      <header class="section-header">
+        <div class="section-row">
+          <p class="label-gold">The Brand Prompt</p>
+          <svg class="corner-arrow" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M14 2 H4 V14 M14 2 L4 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h2 class="section-heading" id="prompt-heading">Canonical Source</h2>
+        <p class="section-subheading">Embedded for AI tools &amp; humans</p>
+        <p class="section-body">
+          The full JetHQ brand prompt — opinionated, prescriptive, and copy-pasteable. Hand this to any AI tool building a
+          JetHQ-themed surface. Hand it to any designer producing a JetHQ artifact. Both should leave with the same posture.
+        </p>
+      </header>
+
+      <div class="prompt-actions">
+        <a class="btn btn-outline" href="./brand-prompt.md" download>Download · brand-prompt.md</a>
+        <button class="btn btn-ghost" type="button" id="copy-prompt">Copy to Clipboard</button>
+      </div>
+
+      <div class="prompt-frame">
+        <div class="md" id="prompt-body" aria-label="JetHQ brand prompt content">
+          <p style="color: var(--text-muted);">Loading brand prompt…</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="colophon">
+    <p>JetHQ · Brand System v1 · Charcoal #414649, gold #b9986d, teal #3dabaf</p>
+    <p>Built with the brand it documents. <a href="https://github.com/svenboettger-supernal/jethq-brand">View source</a></p>
+  </footer>
+
+  <div class="bottom-bar" role="presentation"></div>
+</div>
+
+<!-- Markdown renderer for the embedded brand prompt -->
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+  (async function () {
+    const body = document.getElementById('prompt-body');
+    const copyBtn = document.getElementById('copy-prompt');
+    let raw = '';
+    try {
+      const res = await fetch('./brand-prompt.md', { cache: 'no-store' });
+      if (!res.ok) throw new Error('fetch failed');
+      raw = await res.text();
+      if (window.marked) {
+        body.innerHTML = window.marked.parse(raw, { gfm: true, breaks: false });
+      } else {
+        const pre = document.createElement('pre');
+        pre.textContent = raw;
+        body.innerHTML = '';
+        body.appendChild(pre);
+      }
+    } catch (e) {
+      body.innerHTML = '<p style="color: hsl(4 60% 72%);">Could not load brand-prompt.md. View it directly in the repo.</p>';
+    }
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(raw);
+        const original = copyBtn.textContent;
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => { copyBtn.textContent = original; }, 1600);
+      } catch {
+        copyBtn.textContent = 'Copy failed';
+      }
+    });
+  })();
+</script>
+</body>
+</html>
